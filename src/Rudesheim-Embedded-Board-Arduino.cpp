@@ -1,42 +1,9 @@
-#include "Rudesheim-Embedded-Board.hpp"
-
-#include "Rudesheim-Embedded-Base.hpp"
+#include "Rudesheim-Embedded-Board-Arduino.hpp"
 
 #include <stdexcept>
-#include <Arduino.h>
 
 namespace Rudesheim::Embedded
 {
-  namespace
-  {
-    struct ArduinoBoard:
-      virtual public Board
-    {
-      virtual auto DigitalSignal() const -> Option::Signal const & override;
-      virtual auto Analog8BitSignal() const -> Option::Signal const & override;
-      virtual auto Analog12BitSignal() const -> Option::Signal const & override;
-
-      virtual auto DefaultMode() const -> Option::Mode const & override;
-      virtual auto PullUpMode() const -> Option::Mode const & override;
-
-      virtual auto SteadyOn() const -> Option::Steady const & override;
-      virtual auto SteadyOff() const -> Option::Steady const & override;
-
-      virtual auto Wait( Duration duration ) const -> void override
-      {
-        delayMicroseconds( duration.AsMicroseconds() );
-      }
-
-      virtual auto BeginCommunication( unsigned long baudRate ) const -> void override
-      {
-        Serial.begin( baudRate );
-      }
-    };
-  }
-
-  Board const
-    &board = Class< ArduinoBoard >::SoleObject();
-
   namespace Option
   {
     namespace
@@ -150,41 +117,38 @@ namespace Rudesheim::Embedded
     }
   }
 
-  namespace
+  auto ArduinoBoard::DigitalSignal() const -> Option::Signal const &
   {
-    auto ArduinoBoard::DigitalSignal() const -> Option::Signal const &
-    {
-      return Class< Option::Digital >::SoleObject();
-    }
+    return Class< Option::Digital >::SoleObject();
+  }
 
-    auto ArduinoBoard::Analog8BitSignal() const -> Option::Signal const &
-    {
-      return Class< Option::Analog8Bit >::SoleObject();
-    }
+  auto ArduinoBoard::Analog8BitSignal() const -> Option::Signal const &
+  {
+    return Class< Option::Analog8Bit >::SoleObject();
+  }
 
-    auto ArduinoBoard::Analog12BitSignal() const -> Option::Signal const &
-    {
-      return Class< Option::Analog12Bit >::SoleObject();
-    }
+  auto ArduinoBoard::Analog12BitSignal() const -> Option::Signal const &
+  {
+    return Class< Option::Analog12Bit >::SoleObject();
+  }
 
-    auto ArduinoBoard::DefaultMode() const -> Option::Mode const &
-    {
-      return Class< Option::Default >::SoleObject();
-    }
+  auto ArduinoBoard::DefaultMode() const -> Option::Mode const &
+  {
+    return Class< Option::Default >::SoleObject();
+  }
 
-    auto ArduinoBoard::PullUpMode() const -> Option::Mode const &
-    {
-      return Class< Option::PullUp >::SoleObject();
-    }
+  auto ArduinoBoard::PullUpMode() const -> Option::Mode const &
+  {
+    return Class< Option::PullUp >::SoleObject();
+  }
 
-    auto ArduinoBoard::SteadyOn() const -> Option::Steady const &
-    {
-      return Class< Option::On >::SoleObject();
-    }
+  auto ArduinoBoard::SteadyOn() const -> Option::Steady const &
+  {
+    return Class< Option::On >::SoleObject();
+  }
 
-    auto ArduinoBoard::SteadyOff() const -> Option::Steady const &
-    {
-      return Class< Option::Off >::SoleObject();
-    }
+  auto ArduinoBoard::SteadyOff() const -> Option::Steady const &
+  {
+    return Class< Option::Off >::SoleObject();
   }
 }
