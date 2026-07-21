@@ -1,0 +1,11 @@
+{
+  "name": "Rudesheim-Embedded-Board-Arduino",
+  "version": "0.0.1",
+  "description": "Rudesheim layer 2: Board interface implementation for Arduino-API compatible devices.",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "dependencies": {
+    "Rudesheim-Embedded-Base": "https://github.com/devid-rudesheim/Rudesheim-Embedded-Base.git#v0.0.1",
+    "Rudesheim-Embedded-Foundation": "https://github.com/devid-rudesheim/Rudesheim-Embedded-Foundation.git#v0.0.1"
+  }
+}
