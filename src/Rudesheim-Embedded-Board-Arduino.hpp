@@ -6,7 +6,7 @@
 
 namespace Rudesheim::Embedded
 {
-  struct ArduinoBoard:
+  struct Arduino:
     virtual public Board
   {
     virtual auto DigitalSignal() const -> Option::Signal const & override;

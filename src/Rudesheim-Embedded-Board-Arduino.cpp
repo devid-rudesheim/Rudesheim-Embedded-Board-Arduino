@@ -117,37 +117,37 @@ namespace Rudesheim::Embedded
     }
   }
 
-  auto ArduinoBoard::DigitalSignal() const -> Option::Signal const &
+  auto Arduino::DigitalSignal() const -> Option::Signal const &
   {
     return Class< Option::Digital >::SoleObject();
   }
 
-  auto ArduinoBoard::Analog8BitSignal() const -> Option::Signal const &
+  auto Arduino::Analog8BitSignal() const -> Option::Signal const &
   {
     return Class< Option::Analog8Bit >::SoleObject();
   }
 
-  auto ArduinoBoard::Analog12BitSignal() const -> Option::Signal const &
+  auto Arduino::Analog12BitSignal() const -> Option::Signal const &
   {
     return Class< Option::Analog12Bit >::SoleObject();
   }
 
-  auto ArduinoBoard::DefaultMode() const -> Option::Mode const &
+  auto Arduino::DefaultMode() const -> Option::Mode const &
   {
     return Class< Option::Default >::SoleObject();
   }
 
-  auto ArduinoBoard::PullUpMode() const -> Option::Mode const &
+  auto Arduino::PullUpMode() const -> Option::Mode const &
   {
     return Class< Option::PullUp >::SoleObject();
   }
 
-  auto ArduinoBoard::SteadyOn() const -> Option::Steady const &
+  auto Arduino::SteadyOn() const -> Option::Steady const &
   {
     return Class< Option::On >::SoleObject();
   }
 
-  auto ArduinoBoard::SteadyOff() const -> Option::Steady const &
+  auto Arduino::SteadyOff() const -> Option::Steady const &
   {
     return Class< Option::Off >::SoleObject();
   }
