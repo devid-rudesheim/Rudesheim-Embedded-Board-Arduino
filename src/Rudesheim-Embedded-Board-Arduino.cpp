@@ -163,3 +163,18 @@ namespace Rudesheim::Embedded
     Serial.begin( baudRate );
   }
 }
+
+auto setup() -> void
+{
+  auto
+    &device = Rudesheim::Embedded::EntryPoint();
+
+  Rudesheim::Embedded::board.BeginCommunication( device.BaudRate() );
+
+  Rudesheim::Embedded::board.WaitSetupSerialPort();
+}
+
+auto loop() -> void
+{
+  Rudesheim::Embedded::EntryPoint().Step();
+}
