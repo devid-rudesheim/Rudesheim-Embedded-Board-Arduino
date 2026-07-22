@@ -1,6 +1,7 @@
 #include "Rudesheim-Embedded-Board-Arduino.hpp"
 
 #include <stdexcept>
+#include <Arduino.h>
 
 namespace Rudesheim::Embedded
 {
@@ -150,5 +151,15 @@ namespace Rudesheim::Embedded
   auto Arduino::SteadyOff() const -> Option::Steady const &
   {
     return Class< Option::Off >::SoleObject();
+  }
+
+  auto Arduino::Wait( Duration const &duration ) const -> void
+  {
+    delayMicroseconds( duration.AsMicroseconds() );
+  }
+
+  auto Arduino::BeginCommunication( unsigned long baudRate ) const -> void
+  {
+    Serial.begin( baudRate );
   }
 }

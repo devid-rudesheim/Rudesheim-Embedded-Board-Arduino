@@ -2,8 +2,6 @@
 
 #include "Rudesheim-Embedded-Base.hpp"
 
-#include <Arduino.h>
-
 namespace Rudesheim::Embedded
 {
   struct Arduino:
@@ -19,14 +17,8 @@ namespace Rudesheim::Embedded
     virtual auto SteadyOn() const -> Option::Steady const & override;
     virtual auto SteadyOff() const -> Option::Steady const & override;
 
-    virtual auto Wait( Duration duration ) const -> void override
-    {
-      delayMicroseconds( duration.AsMicroseconds() );
-    }
+    virtual auto Wait( Duration const &duration ) const -> void override;
 
-    virtual auto BeginCommunication( unsigned long baudRate ) const -> void override
-    {
-      Serial.begin( baudRate );
-    }
+    virtual auto BeginCommunication( unsigned long baudRate ) const -> void override;
   };
 }
