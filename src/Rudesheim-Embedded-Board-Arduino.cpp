@@ -155,7 +155,7 @@ namespace Rudesheim::Embedded
 
   auto Arduino::Wait( Duration const &duration ) const -> void
   {
-    delayMicroseconds( duration.AsMicroseconds() );
+    delayMicroseconds( static_cast< unsigned long >( duration.AsSecond().AsMicro() ) );
   }
 
   auto Arduino::BeginCommunication( unsigned long baudRate ) const -> void
